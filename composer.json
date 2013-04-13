@@ -1,0 +1,23 @@
+{
+  "name": "laiz/laiz-session",
+  "description": "Utility for zend-authentication and zend-session",
+  "keywords": ["authentication"],
+  "license": "MIT",
+  "authors": [{
+    "name": "Satoshi Nishimura",
+    "email": "nishim314@gmail.com"
+  }],
+  "autoload": {
+    "psr-0": { "Laiz\\Session\\": "src/" }
+  },
+  "require": {
+    "php": ">=5.3.3",
+    "laiz/laiz-request": "*",
+    "zendframework/zend-session": "2.1.*",
+    "zendframework/zend-authentication": "2.1.*"
+  },
+  "suggest": {
+    "zendframework/zend-math": "Zend\\Math component",
+    "zendframework/zend-validator": "Zend\\Validator component"
+  }
+}
