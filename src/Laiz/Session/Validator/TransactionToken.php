@@ -12,7 +12,11 @@ class TransactionToken extends AbstractValidator
     const INVALID = 'transactionTokenInvalid';
     public function isValid($value)
     {
-        $token = Token::getPrev();
+        $token = Token::getCheck();
+        if ($value === null ||
+            strlen(trim($value)) === 0)
+            return false;
+
         if ($token !== $value){
             $this->error(self::INVALID);
             return false;

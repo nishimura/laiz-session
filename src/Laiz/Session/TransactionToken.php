@@ -7,33 +7,22 @@ use Zend\Math\Rand;
 
 class TransactionToken
 {
-    public $token; // receive from request
-    private $next; // will check in next page
+    public $check; // receive from request
+    public $token; // will check in next page
     public function __construct()
     {
-        $this->next = Rand::getString(32);
+        $this->token = Rand::getString(32);
         $container = self::getContainer();
-        $container->prev = $container->token;
-        $container->token = $this->next;
+        $container->prev = $container->check;
+        $container->check = $this->token;
     }
 
     private static function getContainer()
     {
         return new Container('Laiz_Session_TransactionToken');
     }
-    public static function getPrev()
+    public static function getCheck()
     {
         return self::getContainer()->prev;
-    }
-
-    /**
-     * Important Notice:
-     * Don't use token property in value.
-     * Must be use __toString to value attribute and
-     * must be use token property to name tag in HTML.
-     */
-    public function __toString()
-    {
-        return $this->next;
     }
 }
