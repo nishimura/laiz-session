@@ -17,6 +17,7 @@
     "zendframework/zend-authentication": "2.1.*"
   },
   "suggest": {
+    "laiz/laiz-db": "Laiz\\Db component",
     "zendframework/zend-math": "Zend\\Math component",
     "zendframework/zend-validator": "Zend\\Validator component"
   }
