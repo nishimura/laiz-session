@@ -16,9 +16,9 @@ class Auth
 
     private $filterMessage = 'Required login.';
 
-    public function __construct(AuthenticationService $zAuth)
+    public function __construct(AuthenticationService $zendAuth)
     {
-        $this->service = $zAuth;
+        $this->service = $zendAuth;
     }
     private function getContainer()
     {
