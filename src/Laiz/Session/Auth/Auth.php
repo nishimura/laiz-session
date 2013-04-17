@@ -58,8 +58,8 @@ class Auth
         $this->service->clearIdentity();
     }
 
-    public function resumeUri($defaultUri)
+    public function resumeUri($defaultUri, $msg = null, $level = null)
     {
-        RedirectInterceptException::resumeUri($defaultUri);
+        RedirectInterceptException::resumeUri($defaultUri, $msg, $level);
     }
 }

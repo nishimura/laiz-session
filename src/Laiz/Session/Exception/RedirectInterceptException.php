@@ -23,15 +23,15 @@ class RedirectInterceptException extends RedirectException
         $container->interceptUri = $current;
     }
 
-    public static function resumeUri($defaultUri)
+    public static function resumeUri($defaultUri, $msg, $level)
     {
         $container = self::getContainer();
         if ($container->interceptUri){
             $uri = $container->interceptUri;
             unset($container->interceptUri);
-            throw new RedirectException($uri);
+            throw new RedirectMessageException($uri, $msg, $level);
         }else{
-            throw new RedirectException($defaultUri);
+            throw new RedirectMessageException($defaultUri, $msg, $level);
         }
     }
 }

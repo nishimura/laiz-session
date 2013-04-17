@@ -17,6 +17,10 @@ class Message
     }
     public static function add($message, $level = null)
     {
+        if ($message === null ||
+            strlen(trim($message)) === 0)
+            return;
+
         $container = self::getContainer();
         $messages = $container->messages;
         if ($messages === null)
