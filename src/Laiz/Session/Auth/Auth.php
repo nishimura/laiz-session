@@ -44,6 +44,11 @@ class Auth
         }
     }
 
+    public function getAuthenticationService()
+    {
+        return $this->service;
+    }
+
     public function login($id, $password)
     {
         $adapter = $this->service->getAdapter();
