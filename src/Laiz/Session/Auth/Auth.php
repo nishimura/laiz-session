@@ -3,7 +3,7 @@
 namespace Laiz\Session\Auth;
 
 use Zend\Authentication\AuthenticationService;
-use Zend\Stdlib\RequestInterface as Request;
+use Zend\Http\PhpEnvironment\Request;
 use Zend\Session\Container;
 use Laiz\Session\Exception\RedirectInterceptException;
 use Laiz\Session\Exception\InitializationException;
@@ -33,12 +33,13 @@ class Auth
         $this->filterMessage = $message;
     }
 
-    public function filter(Request $request)
+    public function filter()
     {
         if (!$this->loginUri)
             throw new InitializationException('Un initialized loginUri');
         if (!$this->service->hasIdentity()){
             Message::add($this->filterMessage);
+            $request = new Request();
             throw new RedirectInterceptException($this->loginUri,
                                                  $request->getUri());
         }
